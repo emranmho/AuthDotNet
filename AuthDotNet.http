@@ -1,6 +1,44 @@
-@AuthDotNet_HostAddress = http://localhost:5049
+@AuthDotNet_HostAddress = https://localhost:5001
+@Token = eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjZmMDQwMzc1LTdkZWEtNDY1Yi0wMWQxLTA4ZGQ2MGI3MGM3YiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJFbXJhbiAyIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoibWhvZW1yYW5AZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJQcm9qZWN0IjoiQXV0aERvdE5ldCIsImV4cCI6MTc0MTc5NjEyOCwiaXNzIjoiQXV0aERvdE5ldElzc3VlciIsImF1ZCI6IkF1dGhEb3ROZXRBdWRpZW5jZSJ9.RXgVAq43Tal-eu0SLxnNCdfBhVDHId_Rbac3bfXnxFe-uyOHnjLLm_ciQ4ssNNNm0N0hByxoHb-b_rYvBor2cA
 
-GET {{AuthDotNet_HostAddress}}/weatherforecast/
+POST {{AuthDotNet_HostAddress}}/api/Auth/register
 Accept: application/json
+Content-Type: application/json
 
-###
+{
+  "userName": "Emran 2",
+  "password": "1234"
+}
+
+### login api
+POST {{AuthDotNet_HostAddress}}/api/Auth/login
+Accept: application/json
+Content-Type: application/json
+
+{
+  "userName": "Emran 2",
+  "password": "1234"
+}
+
+### refresh-token api
+POST {{AuthDotNet_HostAddress}}/api/Auth/refresh-token
+Accept: application/json
+Content-Type: application/json
+
+{
+  "userId": "6f040375-7dea-465b-01d1-08dd60b70c7b",
+  "refreshToken": "pC9pHoHM2Nz1+99OsxyfIYaWdaCFiui6EAxbzJaJkcI="
+}
+
+### Auth-check/admin
+GET {{AuthDotNet_HostAddress}}/api/Auth/auth-check/admin
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{Token}}
+
+
+### Auth-check
+GET {{AuthDotNet_HostAddress}}/api/Auth/auth-check
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{Token}}

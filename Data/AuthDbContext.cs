@@ -5,5 +5,5 @@ namespace AuthDotNet.Data;
 
 public class AuthDbContext(DbContextOptions<AuthDbContext> options) : DbContext(options)
 {
-    private DbSet<User> Users { get; set; }
+    public DbSet<User> Users { get; set; }
 }
