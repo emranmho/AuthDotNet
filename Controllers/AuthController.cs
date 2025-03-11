@@ -47,13 +47,13 @@ public class AuthController(IAuthService authService) : ControllerBase
     [Authorize(Roles = "Admin")]
     public IActionResult AuthenticatedAdminOnly()
     {
-        return Ok("You are authenticated and Admin");
+        return Ok("You are authenticated. Your role is Admin.");
     }
     
     [HttpGet("auth-check")]
     [Authorize(Roles = "Customer")]
     public IActionResult Authenticated()
     {
-        return Ok("You are authenticated");
+        return Ok("You are authenticated. Your role is Customer.");
     }
 }
